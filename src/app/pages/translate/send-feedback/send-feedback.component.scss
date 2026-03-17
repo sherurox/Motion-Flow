@@ -1,0 +1,39 @@
+@use '../../../../theme/breakpoints' as breakpoints;
+
+a {
+  display: inline-flex;
+  align-items: center;
+  float: right;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 10px 0;
+  text-decoration: none;
+  padding: 5px 12px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+
+  @media #{breakpoints.$breakpoint-lt-lg} {
+    padding: 5px 12px;
+    margin-right: 16px;
+  }
+
+  &:hover {
+    color: #00d4ff;
+    border-color: rgba(0, 212, 255, 0.30);
+    background: rgba(0, 212, 255, 0.06);
+    text-decoration: none;
+  }
+}
+
+::ng-deep html[dir='rtl'] a {
+  float: left;
+}

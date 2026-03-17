@@ -1,0 +1,55 @@
+@keyframes mfGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+:host {
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+  gap: 8px;
+}
+
+a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  user-select: none;
+}
+
+.wordmark {
+  font-family: 'Google Sans', 'Trebuchet MS', Roboto, sans-serif;
+  font-weight: 800;
+  font-size: 1.05em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  // Animated gradient text
+  background: linear-gradient(
+    90deg,
+    #e0f7ff 0%,
+    #00d4ff 30%,
+    #7c3aed 60%,
+    #06b6d4 85%,
+    #e0f7ff 100%
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: mfGradientShift 5s ease-in-out infinite;
+
+  // Subtle glow behind text
+  filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.35));
+  transition: filter 0.3s ease;
+
+  &:hover {
+    filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.6));
+  }
+}
+
+.flow {
+  // slightly different timing offset for the second word creates a wave effect
+  display: inline;
+}

@@ -1,0 +1,306 @@
+@use './md3-tokens' as md3;
+
+// Material 3 Animations
+// Reusable animation keyframes following Material Design 3 motion guidelines
+
+// Fade Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+// Slide Animations
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Scale Animations
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+// Combined Animations
+@keyframes buttonEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Gradient shift animation for animated gradient bars
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// Glow pulse animation for button hover effects
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    filter: blur(8px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(12px);
+  }
+}
+
+// ─── Motion Flow Keyframes ────────────────────────────────────────────────────
+
+// Flowing animated background gradient
+@keyframes flowBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  33% {
+    background-position: 100% 0%;
+  }
+  66% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// Floating orb drift — primary blob
+@keyframes orbFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(6%, -8%) scale(1.06);
+  }
+  50% {
+    transform: translate(12%, 4%) scale(0.96);
+  }
+  75% {
+    transform: translate(4%, 10%) scale(1.04);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+// Floating orb drift — secondary blob (opposite phase)
+@keyframes orbDrift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-8%, 6%) scale(1.08);
+  }
+  50% {
+    transform: translate(-4%, -10%) scale(0.94);
+  }
+  75% {
+    transform: translate(-10%, -4%) scale(1.05);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+// Shimmer sweep across glass surfaces
+@keyframes shimmerFlow {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(300%) skewX(-15deg);
+  }
+}
+
+// Gentle breathing pulse for glowing borders
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.5;
+    box-shadow: 0 0 20px rgba(var(--mf-accent-rgb), 0.2);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 40px rgba(var(--mf-accent-rgb), 0.45), 0 0 80px rgba(var(--mf-accent-rgb), 0.15);
+  }
+}
+
+// Liquid border rotation
+@keyframes liquidBorder {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// Upward particle drift
+@keyframes particleDrift {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.8);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-120px) translateX(20px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+// ─── Motion Flow Mixins ───────────────────────────────────────────────────────
+
+@mixin mf-glass($blur: 18px, $bg-alpha: 0.06, $border-alpha: 0.14) {
+  background: rgba(255, 255, 255, $bg-alpha);
+  backdrop-filter: blur($blur) saturate(180%);
+  -webkit-backdrop-filter: blur($blur) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, $border-alpha);
+}
+
+@mixin mf-glow($color-rgb, $intensity: 0.3) {
+  box-shadow:
+    0 0 24px rgba($color-rgb, $intensity),
+    0 0 60px rgba($color-rgb, $intensity * 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+@mixin mf-shimmer() {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.07) 50%, transparent 100%);
+    animation: shimmerFlow 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+}
+
+// Mixins for easy application
+@mixin animate-fade-in($duration: md3.$md3-duration-medium2, $delay: 0s) {
+  animation: fadeIn $duration md3.$md3-easing-standard $delay both;
+}
+
+@mixin animate-slide-down($duration: md3.$md3-duration-medium4, $delay: 0s) {
+  animation: slideDown $duration md3.$md3-easing-emphasized $delay both;
+}
+
+@mixin animate-slide-up($duration: md3.$md3-duration-medium4, $delay: 0s) {
+  animation: slideUp $duration md3.$md3-easing-emphasized $delay both;
+}
+
+@mixin animate-scale-in($duration: md3.$md3-duration-medium2, $delay: 0s) {
+  animation: scaleIn $duration md3.$md3-easing-emphasized $delay both;
+}
+
+@mixin animate-button-enter($duration: md3.$md3-duration-medium4, $delay: 0s) {
+  animation: buttonEnter $duration md3.$md3-easing-emphasized $delay both;
+}
+
+// Staggered children animation
+@mixin stagger-children($count: 5, $delay-increment: 0.05s, $start-delay: 0s) {
+  > * {
+    animation: fadeIn md3.$md3-duration-medium2 md3.$md3-easing-standard both;
+
+    @for $i from 1 through $count {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$start-delay + ($delay-increment * $i)};
+      }
+    }
+  }
+}

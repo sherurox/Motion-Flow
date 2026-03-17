@@ -1,0 +1,70 @@
+@keyframes bannerShimmer {
+  0%   { transform: translateX(-100%) skewX(-20deg); }
+  100% { transform: translateX(400%) skewX(-20deg); }
+}
+
+@keyframes bannerGradientFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+ion-toolbar {
+  --background: rgba(6, 6, 20, 0.85) !important;
+  --ion-color-base: rgba(6, 6, 20, 0.85) !important;
+  --ion-color-contrast: rgba(255, 255, 255, 0.9) !important;
+  --min-height: 34px;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.18);
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 22%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 212, 255, 0.07) 50%,
+      transparent 100%
+    );
+    animation: bannerShimmer 5s ease-in-out infinite;
+    pointer-events: none;
+  }
+}
+
+.announcement-content {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+ion-title {
+  text-align: center;
+  font-family: 'Google Sans', 'Trebuchet MS', Roboto, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0;
+
+  // Gradient flowing text
+  background: linear-gradient(
+    90deg,
+    #00d4ff 0%,
+    #c084fc 40%,
+    #06b6d4 70%,
+    #00d4ff 100%
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: bannerGradientFlow 6s ease-in-out infinite;
+}
