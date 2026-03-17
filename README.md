@@ -1,8 +1,7 @@
 <div align="center">
 
 <h1>
-  <img src="src/assets/icons/icon.svg" width="42" alt="Motion-Flow Logo" />
-  &nbsp;Motion-Flow
+  &nbsp;Motion-Flow - Advance Sign Language Translation 
 </h1>
 
 <p align="center">
