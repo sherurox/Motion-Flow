@@ -1,7 +1,7 @@
 <div align="center">
 
 <h1>
-  &nbsp;Motion Flow - An Advance Sign Language Translation Pipeline 
+  &nbsp;Motion Flow - Real-Time Bidirectional Sign Language Translation
 </h1>
 
 <p align="center">
